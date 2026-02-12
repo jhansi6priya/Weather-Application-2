@@ -1,0 +1,81 @@
+/*=====================
+   FORECAST SECTION
+===================== */
+.forecast-section h3 {
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.forecast-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  padding: 5px;
+  justify-content: space-between;
+  row-gap: 5px;
+}
+
+.forecast-card {
+  min-width: 110px;
+  background: linear-gradient(145deg, #0c3a2f, #09281f);
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.forecast-card img {
+  width: 36px;
+  margin: 0.5rem 0;
+}
+
+.forecast-time {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.forecast-temp {
+  font-weight: 600;
+}
+
+/* =====================
+   FORECAST CARD HOVER
+===================== */
+.forecast-card {
+  cursor: pointer;
+}
+
+.forecast-card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(145deg, #0f4b3a, #07be8b);
+}
+
+/*MEDIA QUERY* - TABLET*/
+@media (max-width: 768px) {
+  .forecast-list {
+    justify-content: center;
+    column-gap: 5px;
+  }
+}
+
+/*MEDIA QUERY* - MOBILE*/
+@media (max-width: 425px) {
+  .forecast-list {
+    gap: 0.5rem;
+  }
+
+  .forecast-card {
+    min-width: 85px;
+    padding: 0.6rem;
+  }
+
+  .forecast-time {
+    font-size: 0.7rem;
+  }
+
+  .forecast-temp {
+    font-size: 0.85rem;
+  }
+}
+
+

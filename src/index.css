@@ -1,0 +1,76 @@
+/* =====================
+   DASHBOARD LAYOUT
+===================== */
+.dashboard {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1400px;
+  min-height: 100vh;
+}
+
+.left-panel{
+  flex:6 ;
+}
+
+.right-panel{
+  flex:4 ;
+}
+
+.left-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+
+/* =====================
+   ICON FLOAT ANIMATION
+===================== */
+.cw-main img {
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =====================
+   SECTION FADE-IN
+===================== */
+.left-panel > *,
+.right-panel > * {
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================
+   MOTION SAFETY (ACCESSIBILITY)
+===================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+

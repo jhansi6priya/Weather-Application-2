@@ -1,0 +1,73 @@
+/* =====================
+   DETAILS PAGE
+===================== */
+
+.details-page {
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-card {
+  width: 70%;
+  max-width: 1000px;
+  padding: 1.5rem;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #1d493e, #0a2f26);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.details-card h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  background: linear-gradient(90deg, #FFCC66, #66CCCC);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+}
+
+.details-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.details-grid .detail-item {
+  flex: 1 1 calc(50% - 1.5rem);
+}
+
+.detail-item {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+
+.detail-item span {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.detail-item h3 {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.detail-item:hover{
+  transform: translateY(-4px) scale(1.02);
+  background: linear-gradient(145deg, #0f4b3a, #07be8b);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .details-card{
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .details-grid .detail-item {
+    flex: 1 1 100%;
+  }
+}

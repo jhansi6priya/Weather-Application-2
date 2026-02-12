@@ -1,0 +1,53 @@
+/* =====================
+   GLOBAL RESET
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #0b2f26, #040d0b);
+  font-family: "Inter", system-ui, sans-serif;
+  color: #eafff6;
+  overflow: hidden;
+}
+
+/* =====================
+   CURSOR CSS
+===================== */
+.spotlight-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dashboard {
+  position: relative;
+  z-index: 2;
+}
+
+
+@media (max-width: 768px){
+  body{
+    overflow: visible;
+  }
+  /* DASHBOARD LAYOUT */
+  .dashboard {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 425px) {
+  .dashboard {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+ 
+  .left-panel,
+  .right-panel {
+    gap: 0.5rem;
+  }
+}
