@@ -3,6 +3,8 @@ import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Details from "./pages/Details";
 import Layout from "./layout/Layout";
+import Favourites from "./pages/Favourites";
+import WeatherDetails from "./pages/Details";
 
 import "./App.css";
 import "./styles/SearchBar.css";
@@ -11,6 +13,8 @@ import "./styles/ForecastCard.css";
 import "./styles/HighlightCard.css";
 import "./styles/AboutPage.css";
 import "./styles/DetailPage.css";
+import "./styles/ErrorMessage.css";
+import "./styles/Navbar.css";
 
 export default function App() {
   return (
@@ -19,6 +23,8 @@ export default function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/details" element={<Details />} />
+        <Route path="details/:city" element={<WeatherDetails />} />
+        <Route path="/favourites" element={<Favourites />} />    
       </Route>
     </Routes>
   );

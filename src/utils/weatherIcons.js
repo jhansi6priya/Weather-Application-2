@@ -1,10 +1,10 @@
-import clear from "../assets/images/clear.png";
-import clouds from "../assets/images/clouds.png";
-import drizzle from "../assets/images/drizzle.png";
-import humidity from "../assets/images/humidity.png";
-import rain from "../assets/images/rain.png";
-import snow from "../assets/images/snow.png";
-import mist from "../assets/images/mist.png";
+import clear from "../../public/images/clear.png";
+import clouds from "../../public/images/clouds.png";
+import drizzle from "../../public/images/drizzle.png";
+import humidity from "../../public/images/humidity.png";
+import rain from "../../public/images/rain.png";
+import snow from "../../public/images/snow.png";
+import mist from "../../public/images/mist.png";
 
 const weatherIconMap = {
   Clear: clear,

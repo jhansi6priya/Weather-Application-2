@@ -1,6 +1,7 @@
 import HighlightCard from "./HighlightCard";
+import {memo} from "react";
 
-export default function WeatherHighlights({ data }) {
+export default memo(function WeatherHighlights({ data }) {
   if (!data) return null;
 
   return (
@@ -24,4 +25,4 @@ export default function WeatherHighlights({ data }) {
       </div>
     </section>
   );
-}
+});

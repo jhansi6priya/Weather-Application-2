@@ -7,4 +7,4 @@ export default function ForecastCard({ item }) {
       <p className="forecast-condition">{item.condition}</p>
     </div>
   );
-}
+};

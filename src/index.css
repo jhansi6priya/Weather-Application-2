@@ -3,25 +3,42 @@
 ===================== */
 .dashboard {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
   max-width: 1400px;
   min-height: 100vh;
 }
 
+.search-panel{
+  margin-top: 50px;
+  gap: 12px;
+}
+
+.error-panel{
+  display: flex;
+  justify-content: center;
+}
+.weather-panel{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
 .left-panel{
-  flex:6 ;
+  flex:5 ;
+  z-index: 0;
 }
 
 .right-panel{
-  flex:4 ;
+  flex:5 ;
 }
 
 .left-panel,
 .right-panel {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 24px;
 }
 
 
@@ -72,5 +89,46 @@
     transition: none !important;
   }
 }
+
+/*MEDIA QUERY* - TABLET*/
+@media (max-width: 768px){
+  .dashboard {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .left-panel,
+  .right-panel {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px){
+  body{
+    overflow: visible;
+  }
+  /* DASHBOARD LAYOUT */
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .weather-panel{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 425px) {
+  .dashboard {
+    padding: 8px;
+    gap: 8px;
+  }
+ 
+  .left-panel,
+  .right-panel {
+    gap: 8px;
+  }
+}
+
+
 
 

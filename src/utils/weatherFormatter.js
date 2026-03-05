@@ -2,6 +2,7 @@ import { formatTime, formatDate } from "./dateFormatter";
 
 
 export function formatCurrentWeather(data) {
+  if(!data) return null;
   return {
     city: data.name,
     temperature: Math.round(data.main.temp),

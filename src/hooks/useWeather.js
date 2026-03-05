@@ -1,4 +1,6 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
+
+//importing the API functions from API call
 import {
   getCurrentWeather,
   getForecast,
@@ -6,6 +8,7 @@ import {
   getForecastByCoords,
 } from "../services/weatherApi";
 
+//importing the formatter functions from the utils
 import {
   formatCurrentWeather,
   formatForecastWeather,
@@ -17,10 +20,9 @@ export default function useWeather(city) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
+  //Using useEffect hook to fetch by city - so whenever a user types a new city then the useEffect will render the callback function
   useEffect(() => {
     if (!city) return;
-
     async function fetchByCity() {
       try {
         setLoading(true);
@@ -28,8 +30,8 @@ export default function useWeather(city) {
 
         const currentData = await getCurrentWeather(city);
         const forecastData = await getForecast(city);
-
-        setCurrent(formatCurrentWeather(currentData));
+        const formattedWeather = formatCurrentWeather(currentData);
+        setCurrent(formattedWeather);
         setForecast(formatForecastWeather(forecastData));
       } catch (err) {
         setError(err.message);
@@ -41,8 +43,12 @@ export default function useWeather(city) {
     fetchByCity();
   }, [city]);
 
+  const debounceRef = useRef(null);
 
   const fetchByLocation = useCallback(() => {
+  if (debounceRef.current) clearTimeout(debounceRef.current);
+
+  debounceRef.current = setTimeout(() => {
     if (!navigator.geolocation) {
       setError("Geolocation not supported");
       return;
@@ -56,18 +62,14 @@ export default function useWeather(city) {
 
           const { latitude, longitude } = position.coords;
 
-          const currentData = await getCurrentWeatherByCoords(
-            latitude,
-            longitude
-          );
-          const forecastData = await getForecastByCoords(
-            latitude,
-            longitude
-          );
+          const [currentData, forecastData] = await Promise.all([
+            getCurrentWeatherByCoords(latitude, longitude),
+            getForecastByCoords(latitude, longitude),
+          ]);
 
           setCurrent(formatCurrentWeather(currentData));
           setForecast(formatForecastWeather(forecastData));
-        } catch (err) {
+        } catch {
           setError("Unable to fetch location weather");
         } finally {
           setLoading(false);
@@ -77,12 +79,46 @@ export default function useWeather(city) {
         setError("Location permission denied");
       }
     );
-  }, []);
+  }, 2000); // debounce delay
+}, []);
 
+  // const fetchByLocation = useCallback(() => {
+
+  //   if (!navigator.geolocation) {
+  //     setError("Geolocation not supported");
+  //     return;
+  //   }
+
+  //   navigator.geolocation.getCurrentPosition(
+  //     async (position) => {
+  //       try {
+  //         setLoading(true);
+  //         setError(null);
+
+  //         const { latitude, longitude } = position.coords;
+
+  //         const [currentData, forecastData] = await Promise.all([
+  //           getCurrentWeatherByCoords(latitude, longitude),
+  //           getForecastByCoords(latitude, longitude),
+  //         ]);
+
+  //         setCurrent(formatCurrentWeather(currentData));
+  //         setForecast(formatForecastWeather(forecastData));
+  //       } catch {
+  //         setError("Unable to fetch location weather");
+  //       } finally {
+  //         setLoading(false);
+  //       }
+  //     },
+  //     () => {
+  //       setError("Location permission denied");
+  //     },
+  //   );
+  // }, []);
 
   useEffect(() => {
     fetchByLocation();
-  }, [fetchByLocation]);
+  }, []);
 
   return {
     current,

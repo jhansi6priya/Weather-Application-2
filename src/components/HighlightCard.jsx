@@ -1,4 +1,6 @@
-export default function HighlightCard({ label, value, unit, icon }) {
+import {memo} from "react";
+
+export default memo(function HighlightCard({ label, value, unit, icon }) {
   return (
     <div className="highlight-card">
       <p className="highlight-label">{label}</p>
@@ -9,4 +11,4 @@ export default function HighlightCard({ label, value, unit, icon }) {
       <span className="highlight-icon">{icon}</span>
     </div>
   );
-}
+});

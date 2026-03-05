@@ -3,17 +3,20 @@
 ===================== */
 .search-bar {
   display: flex;
-  gap: 0.7rem;
+  gap: 11.2px;
+  justify-content: center;
 }
 
 .search-bar input {
-  flex: 1;
-  padding: 0.85rem 1rem;
+  width: 500px;
+  padding: 13.6px 16px;
   border-radius: 999px;
   border: none;
   outline: none;
   background: #0f3f33;
   color: #eafff6;
+  position: relative;
+  font-size: 16px;
 }
 
 .search-bar input::placeholder {
@@ -21,13 +24,49 @@
 }
 
 .search-bar button {
-  padding: 0.8rem 1.2rem;
+  padding: 12.8px 19.2px;
   border-radius: 999px;
   border: none;
   background: #1dbf84;
   color: #003b2a;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.input-bar {
+  position: relative;
+}
+
+.search-btn {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  height: 37px;
+  width: 37px;
+}
+
+.search-btn img{
+  position: absolute;
+  right: 9px;
+  top: 10px;
+  height: 16px;
+  width: 16px;
+}
+
+.location-btn {
+  position: relative;
+  height: 47px;
+  width: 47px;
+  border-radius: 50%;
+}
+
+.search-bar .location-btn img{
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  height: 20px;
+  width: 20px;
 }
 
 /* =====================
@@ -63,33 +102,108 @@
 /*MEDIA QUERY* - TABLET*/
 @media (max-width: 768px) {
   .search-bar {
-    flex-direction: column;
     align-items: center;
   }
 
-  .search-bar input {
-    width: 100%;
-  }
+  .search-bar button 
 
-  .search-bar button {
+  .search-bar button,
+  .nav-link {
     width: auto;
-    padding: 0.7rem 1.5rem;
+    padding: 11.2px 24px;
   }
 }
 
 /*MEDIA QUERY* - MOBILE*/
 @media (max-width: 425px) {
   .search-bar {
-    gap: 0.4rem;
+    gap: 6.4px;
   }
 
   .search-bar input {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.85rem;
+    width: 100%;
+    font-size: 13.6px;
   }
 
-  .search-bar button {
-    padding: 0.55rem 1.2rem;
-    font-size: 0.8rem;
+  .search-bar button,
+  .nav-link {
+    padding: 8.8px 19.2px;
+    font-size: 12.8px;
+  }
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  /* margin-top: 6px; */
+  background: #135143;
+  backdrop-filter: blur(18px) saturate(140%);
+  border-radius: 14px;
+  border: 1px solid #3c8876;
+  /* box-shadow: 0 8px 16px rgba(29, 191, 132, 0.35); */
+  overflow: hidden;
+  z-index: 1;
+}
+
+.suggestion-item {
+  padding: 11.2px 16px;
+  cursor: pointer;
+  font-size: 14.4px;
+  transition: background 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.suggestion-item.active {
+  background-color: #2e8b57;
+  color: white;
+}
+
+.location-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid rgba(252, 253, 177, 0.2);
+  border-top: 4px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+ 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mini-spinner {
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(252, 253, 177, 0.2);
+  border-top: 2px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

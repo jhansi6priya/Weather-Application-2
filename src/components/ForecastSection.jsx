@@ -1,6 +1,7 @@
 import ForecastCard from "./ForecastCard";
+import {memo} from "react";
 
-export default function ForecastSection({ forecast }) {
+export default memo(function ForecastSection({ forecast }) {
   if (!forecast || forecast.length === 0) return null;
 
   return (
@@ -14,4 +15,4 @@ export default function ForecastSection({ forecast }) {
       </div>
     </section>
   );
-}
+});
