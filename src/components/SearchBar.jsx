@@ -153,7 +153,7 @@ export default function SearchBar({ onSearch, onLocate }) {
           </div>
 
           <button type="submit" className="search-btn">
-            <img src="/src/assets/loupe.png" alt="search" />
+            <img src="\src\assets\loupe.png" alt="search" />
           </button>
         </div>
 
@@ -167,7 +167,7 @@ export default function SearchBar({ onSearch, onLocate }) {
           {locating ? (
             <span className="mini-spinner"></span>
           ) : (
-            <img src="/src/assets/geo.png" alt="location" />
+            <img src="\src\assets\geo.png" alt="location" />
           )}
         </button>
       </form>
